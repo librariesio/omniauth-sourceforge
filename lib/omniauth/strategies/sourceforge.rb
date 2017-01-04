@@ -1,8 +1,8 @@
-require 'omniauth-oauth2'
+require 'omniauth-oauth'
 
 module OmniAuth
   module Strategies
-    class Sourceforge < OmniAuth::Strategies::OAuth2
+    class Sourceforge < OmniAuth::Strategies::OAuth
 
       option :client_options, {
           site:               'https://sourceforge.net',
@@ -29,7 +29,7 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= access_token.get('/api/user').parsed
+        @raw_info ||= access_token.get('/rest/u').parsed
       end
 
       private
